@@ -2,6 +2,7 @@ const express = require('express')
 const { authRouter } = require('./src/routes/auth.routes.js')
 const database = require('./src/config/database.js')
 const { productRouter } = require('./src/routes/product.routes.js')
+const { cartRouter } = require('./src/routes/cart.routes.js')
 
 const app = express()
 
@@ -14,7 +15,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/auth/', authRouter)
 app.use('/api/v1/products/', productRouter)
-app.use('/api//v1/cart', cartRoutes)
+app.use('/api/v1/cart', cartRouter)
 
 database()
 app.listen(3000, () => {

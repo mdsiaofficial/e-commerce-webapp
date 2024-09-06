@@ -1,8 +1,11 @@
 const express = require('express')
-
+const authenticate = require('../middleware/auth.middleware')
+const { getCart } = require('../controllers/cart.controller')
 const cartRouter = express.Router()
 
-cartRouter.get('/', getProducts)
-cartRouter.post('/', addProduct)
+cartRouter.use(authenticate)
+
+cartRouter.get('/', getCart)
+// cartRouter.post('/', )
 
 module.exports = { cartRouter }
